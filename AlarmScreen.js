@@ -1,16 +1,19 @@
 import { View, Text, FlatList, TouchableOpacity, Platform, SafeAreaView, Image } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import { useContext,  } from "react";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import notifee, { TimestampTrigger, TriggerType } from '@notifee/react-native';
 import Swipeable from 'react-native-swipeable';
 import PropTypes from 'prop-types';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { ThemeContext } from './ThemeContext';
 
 export const AlarmScreen= ({navigation})=>{
     const [selectedTime, setSelectedTime] = useState(new Date());
     const [alarms, setAlarms] = useState([]);
     const [notificationIds, setNotificationIds] = useState([]);
     const [showTimePicker, setShowTimePicker] = useState(false);
+    let { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         return () => {
@@ -90,16 +93,16 @@ export const AlarmScreen= ({navigation})=>{
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
-          marginVertical: 5,
-          backgroundColor: "orange",
-          padding: 15,
+          marginVertical: hp("0.5%"),
+          backgroundColor: theme.AlarmViewColor,
+          padding: hp("1.75%"),
           borderRadius: 13
         }}>
           <Text style={{ 
             flex: 1, 
             color: "black", 
-            fontSize: 25,
-            marginLeft:10
+            fontSize: hp("3%"),
+            marginLeft: hp("2%")
              }}>
             {formatTime(item)}
           </Text>
@@ -114,10 +117,11 @@ export const AlarmScreen= ({navigation})=>{
               flex: 1,
               borderRadius: 13,
               backgroundColor: 'red', 
-              padding: 10, 
+              
               justifyContent: 'center', 
               alignItems: 'flex-start',
-              width: 100, // veya istediğiniz genişlik
+              width: wp("20%"), // veya istediğiniz genişlik
+              
             }}>
             <Text style={{ color: 'white' }}>Sil</Text>
           </TouchableOpacity>,
@@ -135,20 +139,23 @@ export const AlarmScreen= ({navigation})=>{
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor:"black"
+            backgroundColor:theme.mainColor
+  
           }}>
           <View
             style={{
               flex: 1,
               justifyContent: "flex-start",
               alignItems: "center",
-              marginTop: 3
+             
+              
             }}>
             <Image
               style={{
-                width: 250,
-                height: 250,
-                borderRadius: 15
+                width: wp("65%"),
+                height: hp("35%"),
+                borderRadius: 15,
+
               }}
               source={require("./src/assets/images/uyandıran.png")} />
           </View>
@@ -167,14 +174,17 @@ export const AlarmScreen= ({navigation})=>{
             />
           )}
     
-          <FlatList data={alarms} renderItem={renderSwipeableItem} keyExtractor={(item) => item.toString()} />
+          <FlatList 
+              data={alarms} 
+              renderItem={renderSwipeableItem} 
+              keyExtractor={(item) => item.toString()} />
     
           <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <TouchableOpacity onPress={() => setShowTimePicker(true)}>
               <View
                 style={{
-                  padding: 15,
-                  backgroundColor: "orange",
+                  padding: wp("5%"),
+                  backgroundColor: theme.ButtonColor,
                   borderRadius: 13
                 }}>
                 <Text
@@ -186,8 +196,8 @@ export const AlarmScreen= ({navigation})=>{
             <TouchableOpacity onPress={addAlarm} disabled={!selectedTime}>
               <View
                 style={{
-                  padding: 15,
-                  backgroundColor: "orange",
+                  padding: wp("5%"),
+                  backgroundColor: theme.ButtonColor,
                   borderRadius: 13
                 }}>
                 <Text
