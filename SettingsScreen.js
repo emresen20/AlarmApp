@@ -1,7 +1,7 @@
 
 import { SafeAreaView } from "react-native-safe-area-context";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Switch, Text, View } from "react-native";
+import { Switch, Text, TouchableOpacity, View } from "react-native";
 import { useContext, useState } from "react";
 import { ThemeContext } from "./ThemeContext";
 
@@ -10,12 +10,20 @@ export const SettingsScreen= ({navigation})=>{
     const [isDark, setIsDark] = useState(false);
     let { setIsDarkTheme } = useContext(ThemeContext);
     let { theme } = useContext(ThemeContext);
+    const {isTurkish, setIsTurkish} =useContext(ThemeContext);
+
 
     const toggleSwitch = () => {
         setIsDarkTheme(!isDark);
 
         setIsDark(!isDark);
     };
+
+    const toggleLanguage = () => {
+        // Türkçe butonuna tıklanırsa Türkçe yap
+        // İngilizce butonuna tıklanırsa İngilizce yap
+        setIsTurkish((prev) => !prev);
+      };
     return(
         <SafeAreaView
                      style={{
@@ -37,8 +45,9 @@ export const SettingsScreen= ({navigation})=>{
                 <Text 
                 style={{
                     fontSize:hp("3%"),
-                    color: "white"}}>
-                        Settings
+                    color: theme.AlarmViewColor,
+                    fontWeight:"bold"}}>
+                            {isTurkish? "Ayarlar": "Settings"}
                         </Text>
             </View>
             <View
@@ -56,7 +65,7 @@ export const SettingsScreen= ({navigation})=>{
                 }}>
 
                 <Text style={{color:"white"}}>
-                    Dark Theme
+                {isTurkish? "Koyu Tema":"Dark Thema"}
                 </Text>
 
                 <Switch
@@ -67,6 +76,16 @@ export const SettingsScreen= ({navigation})=>{
                     value={isDark}/>
 
             </View>
+            <View style={{
+                justifyContent:"space-evenly",
+                flexDirection:"row"}}>
+
+                    <TouchableOpacity onPress={toggleLanguage}>
+                         <Text style={{color:theme.AlarmViewColor}}>{isTurkish ? "Türkçe" : "English"}</Text>
+                    </TouchableOpacity>
+
+            </View>
+            
         </SafeAreaView>
     )
 }

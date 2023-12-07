@@ -14,11 +14,14 @@ export const AlarmScreen= ({navigation})=>{
     const [notificationIds, setNotificationIds] = useState([]);
     const [showTimePicker, setShowTimePicker] = useState(false);
     let { theme } = useContext(ThemeContext);
-
+    const { isTurkish } = useContext(ThemeContext);
+    const keyproducts = (item) => item.toString()  // for product id
     useEffect(() => {
         return () => {
           // Cleanup: Remove notifications when the component unmounts
           cancelAllNotifications();
+          
+
         };
       }, []);
 
@@ -128,6 +131,7 @@ export const AlarmScreen= ({navigation})=>{
         ];
     
         return (
+          
           <Swipeable rightButtons={rightButtons}>
             {renderItem({ item, index })}
           </Swipeable>
@@ -142,23 +146,7 @@ export const AlarmScreen= ({navigation})=>{
             backgroundColor:theme.mainColor
   
           }}>
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "flex-start",
-              alignItems: "center",
-             
-              
-            }}>
-            <Image
-              style={{
-                width: wp("65%"),
-                height: hp("35%"),
-                borderRadius: 15,
 
-              }}
-              source={require("./src/assets/images/uyandıran.png")} />
-          </View>
     
           {showTimePicker && (
             <DateTimePicker
@@ -177,7 +165,25 @@ export const AlarmScreen= ({navigation})=>{
           <FlatList 
               data={alarms} 
               renderItem={renderSwipeableItem} 
-              keyExtractor={(item) => item.toString()} />
+              keyExtractor={keyproducts}
+              ListHeaderComponent={         //for making header on the flatlist
+             <View
+                style={{
+                  flex: 1,
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                 
+                  
+                }}>
+                <Image
+                  style={{
+                    width: wp("65%"),
+                    height: hp("35%"),
+                    borderRadius: 15,
+    
+                  }}
+                  source={require("./src/assets/images/uyandıran.png")} />
+              </View>} />
     
           <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
             <TouchableOpacity onPress={() => setShowTimePicker(true)}>
@@ -189,7 +195,7 @@ export const AlarmScreen= ({navigation})=>{
                 }}>
                 <Text
                   style={{ color: "white" }}>
-                  Saat Seç
+                  {isTurkish? "Saat Seç": "Choose Time"}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -204,7 +210,7 @@ export const AlarmScreen= ({navigation})=>{
                   style={{
                     color: "white"
                   }}>
-                  Alarm Ekle
+                   {isTurkish? "Alarm Ekle":"Add Alarm"}
                 </Text>
               </View>
             </TouchableOpacity>

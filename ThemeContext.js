@@ -7,13 +7,18 @@ export const ThemeContext = createContext();
 export const ThemeContextProvider = ( props ) => {
 
     const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isTurkish, setIsTurkish] = useState(true);
 
     const theme = isDarkTheme ? darkTheme : lightTheme;
+
+    const toggleLanguage = () => {
+        setIsTurkish((prev) => !prev);
+      };
 
     return(
         <ThemeContext.Provider
             value={{
-                isDarkTheme,setIsDarkTheme, theme
+                isDarkTheme,setIsDarkTheme, theme,isTurkish,setIsTurkish,toggleLanguage
             }}>
 
             { props.children }

@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SettingsScreen } from './SettingsScreen';
 import { AlarmScreen } from './AlarmScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { ThemeContextProvider, ThemeContext } from './ThemeContext'; // ThemeContextProvider ve ThemeContext ekledimmmm
+import { ThemeContextProvider, ThemeContext } from './ThemeContext'; // ThemeContextProvider ve ThemeContext ekledim
 import { useContext } from "react";
 
 const Tab = createBottomTabNavigator();
