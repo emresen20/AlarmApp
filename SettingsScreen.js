@@ -15,26 +15,25 @@ export const SettingsScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const { choosenvoice, setChoosenvoice } = useContext(ThemeContext);
 
-    
+    // for open voice (i used youtube)
     const MYWebview = () => {
-    const videoUrl = 'https://www.youtube.com/watch?v=JAlnpmae-1c&list=PL1Jp848vxKc24eu0h8ahLm7ffIvekrCyD&ab_channel=trndby';
+        const videoUrl = 'https://www.youtube.com/watch?v=iAgtj6iCMpI&list=PLo12LO2_NWJVJIXCrVolCfTexjusJvQBi&ab_channel=MixEdit';
 
-    return (
-        <View style={{ flex:8}}>
-            <WebView source={{ uri: videoUrl }} />
-        </View>
-    );
+        return (
+            <View style={{ flex: 8 }}>
+                <WebView source={{ uri: videoUrl }} />
+            </View>
+        );
     };
-
+    // for change the theme
     const toggleSwitch = () => {
         setIsDarkTheme(!isDark);
 
         setIsDark(!isDark);
     };
-
+   // for change the language
     const toggleLanguage = () => {
-        // Türkçe butonuna tıklanırsa Türkçe yap
-        // İngilizce butonuna tıklanırsa İngilizce yap
+       
         setIsTurkish((prev) => !prev);
     };
     return (
@@ -102,7 +101,7 @@ export const SettingsScreen = ({ navigation }) => {
             </View>
             <TouchableOpacity
                 onPress={() => {
-                    setModalVisible(true)
+                    setModalVisible(true)  // open modal
                 }}>
                 <View
                     style={{
@@ -135,29 +134,61 @@ export const SettingsScreen = ({ navigation }) => {
                 <View style={{
                     width: "80%",
                     height: "80%",
-                    backgroundColor: "red",
+                    backgroundColor: theme.AlarmViewColor,
                     justifyContent: "center",
                     margin: hp(5),
                     position: "relative"
                 }}>
-                    <MYWebview/>
-
-                    <View 
-                            style={{
-                                flex:1,
-                                flexDirection:"row",
-                                justifyContent:"space-between"
-                            }}>
-                        
-                            <Button onPress={() => { setChoosenvoice("sound")} } title="Ramiz"/>
-                            <Button onPress={() => { setChoosenvoice("sound2")}} title="Ronaldo"/>
-                            <Button onPress={() => { setChoosenvoice("sound1")}} title="Arthur"/>
-
-                            
-                            
-                        
-                    </View>
+                    <MYWebview />
                     
+                    <View   // for choose a voice
+                        style={{
+                            flex: 1,
+                            flexDirection: "row",
+                            justifyContent: "space-between"
+                        }}>
+                        <TouchableOpacity onPress={()=>{setChoosenvoice("sound1")}}>
+                            <View style={{ padding: wp(6), backgroundColor: "gray" }}>
+                                <Text
+                                    style={
+                                        {
+                                            color:
+                                                "white"
+                                        }}>
+                                    ARTHUR
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{setChoosenvoice("sound2")}}>
+                            <View style=
+                                {{
+                                    padding: wp(6),
+                                    backgroundColor: "gray"
+                                }}>
+                                <Text style={{ color: "white" }} >
+                                    RONALDO
+                                </Text>
+                            </View>
+
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={()=>{setChoosenvoice("sound")}}>
+                            <View style={{
+                                padding: wp(6),
+                                backgroundColor: "gray"
+                            }}>
+                                <Text
+                                    style={{ color: "white" }}>
+                                    RAMİZ</Text>
+                            </View>
+                        </TouchableOpacity>
+
+
+
+
+
+                    </View>
+
                     <TouchableOpacity
                         style={{
                             height: hp(3),
@@ -168,20 +199,21 @@ export const SettingsScreen = ({ navigation }) => {
                             right: 0
 
                         }}
-                        onPress={() =>{
-                           setModalVisible(false)
+                        onPress={() => {
+                            setModalVisible(false)
                         }}>
                         <View
                             style={{
                                 height: hp(3),
                                 width: wp(3),
-                                backgroundColor: "white",
+                                backgroundColor: "red",
                                 position: "absolute",
                                 top: 0,
-                                right: 0
+                                right: 0,
+                                
 
                             }}>
-                            <Text>X</Text>
+                            <Text style={{color:"black", fontWeight:"bold"}}>X</Text>
 
                         </View>
                     </TouchableOpacity>

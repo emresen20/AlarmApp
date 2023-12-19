@@ -16,7 +16,7 @@ export const AlarmScreen= ({navigation})=>{
     const [showTimePicker, setShowTimePicker] = useState(false);
     let { theme } = useContext(ThemeContext);
     const { isTurkish } = useContext(ThemeContext);
-    const {choosenvoice} = useContext(ThemeContext);  // settingsten gelen ses
+    const {choosenvoice} = useContext(ThemeContext);  // voice coming from settings
     const keyproducts = (item) => item.toString()  // for product id
     useEffect(() => {
         return () => {
@@ -26,7 +26,7 @@ export const AlarmScreen= ({navigation})=>{
 
         };
       }, []);
-
+      // choosing time
       const handleTimeChange = (event, time) => {
         if (Platform.OS === 'android' && event.type === 'set') {
           setSelectedTime(time);
@@ -34,10 +34,11 @@ export const AlarmScreen= ({navigation})=>{
           setSelectedTime(time);
         }
       };
+      // for add a alarm
       const addAlarm = async () => {
         if (selectedTime) {
           const channelId = await notifee.createChannel({
-            id: choosenvoice,  // id ismine göre kayıtlı ses 
+            id: choosenvoice,  // id name is importan for use chosen sound
             name: 'Default Channel ',
             sound: 'ronaldo',
             importance: AndroidImportance.HIGH,
@@ -68,7 +69,7 @@ export const AlarmScreen= ({navigation})=>{
           setSelectedTime(new Date());
         }
       };
-      
+      // remove alarm
       const removeAlarm = async (index) => {
         const newAlarms = [...alarms];
         const newNotificationIds = [...notificationIds];
@@ -82,19 +83,19 @@ export const AlarmScreen= ({navigation})=>{
         // Cancel the removed notification
         await cancelNotification(removedNotificationId);
       };
-
+      // cancel the notification
       const cancelNotification = async (notificationId) => {
         await notifee.cancelNotification(notificationId);
       };
-
+      // cancel all notificition
       const cancelAllNotifications = async () => {
         await notifee.cancelAllNotifications();
       };
-    
+      // format time
       const formatTime = (time) => {
         return new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }).format(time);
       };
-
+      // for flatlist
       const renderItem = ({ item, index }) => (
         <View style={{
           flex: 1,
@@ -115,7 +116,7 @@ export const AlarmScreen= ({navigation})=>{
           </Text>
         </View>
       );
-    
+             //for swipeable
       const renderSwipeableItem = ({ item, index }) => {
         const rightButtons = [
           <TouchableOpacity
@@ -127,10 +128,10 @@ export const AlarmScreen= ({navigation})=>{
               
               justifyContent: 'center', 
               alignItems: 'flex-start',
-              width: wp("20%"), // veya istediğiniz genişlik
+              width: wp("20%"), 
               
             }}>
-            <Text style={{ color: 'white' }}>Sil</Text>
+            <Text style={{ color: 'white' }}>{isTurkish ? "Sil" : "Remove"}</Text>
           </TouchableOpacity>,
         ];
     
