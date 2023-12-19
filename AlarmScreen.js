@@ -2,11 +2,12 @@ import { View, Text, FlatList, TouchableOpacity, Platform, SafeAreaView, Image }
 import React, { useState, useEffect } from 'react';
 import { useContext,  } from "react";
 import DateTimePicker from '@react-native-community/datetimepicker';
-import notifee, { TimestampTrigger, TriggerType } from '@notifee/react-native';
+import notifee, { TimestampTrigger, TriggerType, AndroidImportance } from '@notifee/react-native';
 import Swipeable from 'react-native-swipeable';
 import PropTypes from 'prop-types';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { ThemeContext } from './ThemeContext';
+
 
 export const AlarmScreen= ({navigation})=>{
     const [selectedTime, setSelectedTime] = useState(new Date());
@@ -15,6 +16,7 @@ export const AlarmScreen= ({navigation})=>{
     const [showTimePicker, setShowTimePicker] = useState(false);
     let { theme } = useContext(ThemeContext);
     const { isTurkish } = useContext(ThemeContext);
+    const {choosenvoice} = useContext(ThemeContext);  // settingsten gelen ses
     const keyproducts = (item) => item.toString()  // for product id
     useEffect(() => {
         return () => {
@@ -35,10 +37,12 @@ export const AlarmScreen= ({navigation})=>{
       const addAlarm = async () => {
         if (selectedTime) {
           const channelId = await notifee.createChannel({
-            id: 'sound',
-            name: 'Default Channel',
-            sound: 'ramiz',
+            id: choosenvoice,  // id ismine göre kayıtlı ses 
+            name: 'Default Channel ',
+            sound: 'ronaldo',
+            importance: AndroidImportance.HIGH,
           });
+          
     
           const trigger: TimestampTrigger = {
             type: TriggerType.TIMESTAMP,

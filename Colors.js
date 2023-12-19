@@ -1,5 +1,5 @@
 export const lightTheme = {
-    mainColor:"#355070",
+    mainColor:"#E3F3CE",
     AlarmViewColor:"#97495A",
     ButtonColor:"#9C1C20"
 

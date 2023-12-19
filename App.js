@@ -36,8 +36,12 @@ function AppContent() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'blue',
-          tabBarInactiveTintColor: 'green',
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'white',
+          tabBarActiveBackgroundColor: theme.ButtonColor,
+          tabBarInactiveBackgroundColor: theme.ButtonColor,
+
+          
         })}
       >
         <Tab.Screen name="AlarmScreen" component={AlarmScreen} options={{ headerShown: false }} />
