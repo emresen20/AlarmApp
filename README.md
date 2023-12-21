@@ -1,4 +1,6 @@
-i created AlarmApp with using Notifee
+i created AlarmApp with using React Native
+
+and using Notifee
 
 
 Notifee notification
