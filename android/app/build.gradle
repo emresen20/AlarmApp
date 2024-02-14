@@ -122,3 +122,7 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+<<<<<<< HEAD
+=======
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle") //iconların çalışması için
+>>>>>>> 2cc1ef3400279330e3c67ae6ed40a2a134cf1b68

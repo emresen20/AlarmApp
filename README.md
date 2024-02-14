@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
@@ -77,3 +78,41 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+=======
+i created AlarmApp with using React Native
+
+and using Notifee
+
+
+Notifee notification
+
+
+Contex Api
+
+
+Bottom-Tab
+
+
+Dark-mode
+
+Turkish English languages.
+
+swipe to delete
+
+Youtube Link: https://www.youtube.com/watch?v=-5AohqtlwsY&t=15&ab_channel=Emre
+
+![resim](https://r.resimlink.com/i3ajI.png)
+
+![resim](https://r.resimlink.com/Q3IMW1iO6hn.png)
+
+![resim](https://r.resimlink.com/uQ8x9Ch.png)
+
+![resim](https://r.resimlink.com/y-ZuBwhXtQ.png)
+
+![resim](https://r.resimlink.com/Sul2o.png)
+
+![resim](https://r.resimlink.com/jXgKY.png)
+
+
+![resim](https://r.resimlink.com/yvKNY3Xn.png)
+>>>>>>> 2cc1ef3400279330e3c67ae6ed40a2a134cf1b68

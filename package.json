@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@notifee/react-native": "^7.8.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
@@ -19,6 +20,24 @@
     "react-native-safe-area-context": "^4.7.4",
     "react-native-screens": "^3.27.0",
     "react-native-vector-icons": "^10.0.2"
+=======
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "@notifee/react-native": "^7.8.0",
+    "@react-native-community/datetimepicker": "^7.6.2",
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "deprecated-react-native-prop-types": "^5.0.0",
+    "react": "^18.2.0",
+    "react-native": "^0.72.7",
+    "react-native-responsive-screen": "^1.4.2",
+    "react-native-safe-area-context": "^4.7.4",
+    "react-native-screens": "^3.27.0",
+    "react-native-svg": "^14.1.0",
+    "react-native-swipeable": "^0.6.0",
+    "react-native-vector-icons": "^10.0.3",
+    "react-native-webview": "^13.6.3"
+>>>>>>> 2cc1ef3400279330e3c67ae6ed40a2a134cf1b68
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
