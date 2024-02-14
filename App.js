@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SettingsScreen } from './SettingsScreen';
-import { AlarmScreen } from './AlarmScreen';
+import { SettingsScreen } from './src/screens/SettingsScreen';
+import { AlarmScreen } from './src/screens/AlarmScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // İkonların yüklenmesi için 'Ionicons' paketini düzelttim.
 
 const Tab = createBottomTabNavigator();
