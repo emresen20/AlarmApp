@@ -35,6 +35,7 @@ export const AlarmScreen = ({ navigation }) => {
     } else if (Platform.OS === 'ios') {
       setSelectedTime(time);
     }
+
   };
   // for add a alarm
   const addAlarm = async () => {
@@ -82,6 +83,10 @@ export const AlarmScreen = ({ navigation }) => {
       setSelectedTime(new Date());
     }
   };
+
+
+
+
 
   // remove alarm
   const removeAlarm = async (index) => {

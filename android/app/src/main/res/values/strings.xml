@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">AlarmApp</string>
-<<<<<<< HEAD
-=======
-    <string name="default_notification_channel_id">default</string>
->>>>>>> 2cc1ef3400279330e3c67ae6ed40a2a134cf1b68
-</resources>
